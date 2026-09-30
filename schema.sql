@@ -13,9 +13,9 @@ CREATE TABLE Fichas(
 CREATE TABLE Usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    CPF VARCHAR(11) UNIQUE,
+    CPF VARCHAR(11) UNIQUE NOT NULL,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    cargo VARCHAR(100),
+    cargo VARCHAR(100) NOT NULL,
     operacao INT,
 
     FOREIGN KEY (Operacao) REFERENCES Operacoes(id)
@@ -25,8 +25,9 @@ CREATE TABLE Auditoria(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     data_auditoria TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    usuarios_id INT,
-    auditor_id INT,
+    usuarios_id INT NOT NULL,
+    auditor_id INT NOT NULL,
+    Nota INT NOT NULL,
 
     FOREIGN KEY (usuarios_id) REFERENCES Usuarios(id),
     FOREIGN KEY (auditor_id) REFERENCES Usuarios(id),
