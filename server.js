@@ -8,14 +8,14 @@ const port = 3000;
 const operacoesRouter = require('./src/routes/operacoesRoutes');
 app.use('/Operacoes', operacoesRouter);
 
-const usuariosRouter = require('./src/routes/usuariosRoutes');
-app.use('/Usuario', usuariosRouter);
+// const usuariosRouter = require('./src/routes/usuariosRoutes');
+// app.use('/Usuario', usuariosRouter);
 
-const fichasRouter = require('./src/routes/fichasRoutes');
-app.use('/Fichas', fichasRouter);
+// const fichasRouter = require('./src/routes/fichasRoutes');
+// app.use('/Fichas', fichasRouter);
 
-const auditoriaRouter = require('./src/routes/auditoriaRoutes');
-app.use('/Auditoria', auditoriaRouter);
+// const auditoriaRouter = require('./src/routes/auditoriaRoutes');
+// app.use('/Auditoria', auditoriaRouter);
 
 // Inicialização do servidor
 app.listen(port, () => {

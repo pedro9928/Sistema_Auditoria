@@ -1,10 +1,18 @@
 const express = require('express');
 const operacoesRouter = express.Router(); // cria o roteador modular
+const pool = require('../config/database');
+
 
 //definição das rotas
 
-operacoesRouter.get ('/', (req, res) => {
-    res.send("Lista de equipes");
+operacoesRouter.get('/', async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT * FROM Operacoes');
+        res.json(rows);
+    } catch (erro) {
+        console.error(erro);
+        res.status(500).json({ mensagem: 'Erro ao conectar com o banco' });
+    }
 });
 
 operacoesRouter.get ('/:id', (req, res) => {
@@ -13,7 +21,6 @@ operacoesRouter.get ('/:id', (req, res) => {
 
 operacoesRouter.post('/', (req, res) => {
     console.log(req.body)
-    res.json({ mensagem: "Operação criada", dados: req.body })
 });
 
 operacoesRouter.patch('/', (req, res) => {
